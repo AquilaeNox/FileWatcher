@@ -4,7 +4,7 @@ FileWatcher.exe
 /fw
 /bin/
 
-# Runtime state — never commit these
+# Runtime state, never commit these
 config.json
 *.sqlite
 *.sqlite-wal

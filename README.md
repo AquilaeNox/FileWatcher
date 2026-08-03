@@ -5,7 +5,7 @@
 Watches a directory for incoming ZIP archives and extracts a chosen file type
 from each one.
 
-It is built for the unattended case — a folder that something else drops files
+It is built for the unattended case, a folder that something else drops files
 into, on a machine nobody is watching. That means the awkward parts are the
 point: an archive may still be half-written when it appears, the same file may
 arrive twice, and the process may be restarted at any moment. FileWatcher keeps
@@ -13,7 +13,7 @@ a small SQLite ledger so every archive is processed exactly once, and waits for
 a file to stop growing before opening it.
 
 Written in Go. SQLite is the pure-Go build, so there is no cgo and no system
-library to install — the result is a single binary.
+library to install, the result is a single binary.
 
 ## How it works
 
@@ -29,19 +29,19 @@ library to install — the result is a single binary.
                                  └──────────┘
 ```
 
-1. **Detect** — `fsnotify` reports a new or renamed file matching
+1. **Detect**, `fsnotify` reports a new or renamed file matching
    `watch_extension`.
-2. **Claim** — the worker inserts the path into SQLite with
+2. **Claim**: the worker inserts the path into SQLite with
    `INSERT OR IGNORE`. Exactly one worker can win that insert, so two workers
    can never process the same archive, and a restart will not reprocess a file
    that already completed.
-3. **Wait** — the file is polled until its size stops changing. A ZIP that is
+3. **Wait**: the file is polled until its size stops changing. A ZIP that is
    still being copied is not a valid ZIP, and opening it early is the most
    common way this kind of tool fails.
-4. **Extract** — every entry matching `inner_extension` is written to
+4. **Extract**: every entry matching `inner_extension` is written to
    `destination_dir`. Entry names are flattened with `filepath.Base`, so a
    crafted archive cannot write outside the destination.
-5. **Record** — the result is stored as `SUCCESS`, `NO_MATCH` or `FAILED`,
+5. **Record**: the result is stored as `SUCCESS`, `NO_MATCH` or `FAILED`,
    with the error text if there was one.
 
 ## Configuration
@@ -99,7 +99,7 @@ ORDER BY id DESC LIMIT 20;
 
 | status | meaning |
 | --- | --- |
-| `PROCESSING` | claimed, not finished — or interrupted mid-run |
+| `PROCESSING` | claimed, not finished, or interrupted mid-run |
 | `SUCCESS` | a matching file was extracted |
 | `NO_MATCH` | the archive was readable but contained nothing matching |
 | `FAILED` | unreadable, or never stopped changing; see the `error` column |
@@ -116,9 +116,9 @@ Honest list, in rough order of how likely you are to hit them:
   on startup would fix it.
 - **No graceful shutdown.** The process runs until killed, so an extraction can
   be cut off mid-write.
-- **The watcher is not recursive** — subdirectories of `source_dir` are not
+- **The watcher is not recursive**: subdirectories of `source_dir` are not
   watched.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).

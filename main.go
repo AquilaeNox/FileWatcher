@@ -332,7 +332,7 @@ func processZip(path string, cfg Config, dbQ chan<- dbOp) {
 // A filesystem event fires when the file appears, not when the writer is
 // finished with it, so a ZIP opened at that moment is usually truncated. Two
 // consecutive checks reporting the same size is the cheap approximation of
-// "the writer has let go" — imperfect, since a slow writer could pause across
+// "the writer has let go", imperfect, since a slow writer could pause across
 // both checks, but wrong far less often than not waiting at all.
 //
 // A file that does not exist yet is retried rather than treated as an error:
