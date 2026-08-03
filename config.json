@@ -1,0 +1,10 @@
+{
+  "source_dir": "C:\\notify\\input",
+  "destination_dir": "C:\\notify\\output",
+  "watch_extension": ".zip",
+  "inner_extension": ".ddd",
+  "worker_count": 4,
+  "retry_interval_seconds": 2,
+  "max_retries": 5,
+  "database_path": ".\\db.sqlite"
+}
