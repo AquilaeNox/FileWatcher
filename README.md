@@ -1,5 +1,7 @@
 # FileWatcher
 
+[![CI](https://github.com/AquilaeNox/FileWatcher/actions/workflows/ci.yml/badge.svg)](https://github.com/AquilaeNox/FileWatcher/actions/workflows/ci.yml)
+
 Watches a directory for incoming ZIP archives and extracts a chosen file type
 from each one.
 
