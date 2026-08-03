@@ -1,6 +1,6 @@
-module AquilaeNox/FileWatcher
+module github.com/AquilaeNox/FileWatcher
 
-go 1.20
+go 1.25.0
 
 require (
 	github.com/fsnotify/fsnotify v1.9.0

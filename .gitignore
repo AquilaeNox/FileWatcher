@@ -1,0 +1,14 @@
+# Build output
+FileWatcher
+FileWatcher.exe
+/fw
+/bin/
+
+# Runtime state — never commit these
+config.json
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+db.sqlite*
+logs/
+*.log

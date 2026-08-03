@@ -335,7 +335,7 @@ func extractFile(f *zip.File, destDir string) error {
 
 	// Ensure destination dir exists.
 	if err := os.MkdirAll(destDir, 0755); err != nil {
-		return fmt.Errorf("mkdir dest: %%w", err)
+		return fmt.Errorf("mkdir dest: %w", err)
 	}
 
 	outPath := filepath.Join(destDir, filepath.Base(f.Name))
