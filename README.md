@@ -19,7 +19,7 @@ library to install, the result is a single binary.
 
 ```
    drop folder                    workers                  destination
-  ┌────────────┐   fsnotify   ┌──────────────┐           ┌────────────┐
+  ┌────────────┐   fsnotify   ┌───────────────┐           ┌────────────┐
   │  *.zip     │ ───────────► │  claim → wait │ ────────► │  *.ddd     │
   └────────────┘              │  → unzip      │           └────────────┘
                               └───────┬───────┘
